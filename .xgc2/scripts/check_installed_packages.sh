@@ -166,3 +166,8 @@ rm -f -- "${bridge_stub}"
   "${PREFIX}/lib/xgc2_onboard_teleop/onboard_teleop_node"
 
 echo "Installed AgileX chassis ROS1 package checks passed"
+
+test -f /etc/udev/rules.d/99-xgc2-agilex-d435-color.rules
+grep -Fq 'ENV{ID_USB_INTERFACE_NUM}=="03"' /etc/udev/rules.d/99-xgc2-agilex-d435-color.rules
+grep -Fq '/dev/xgc2-d435-color' "${PREFIX}/share/agilex_onboard_autostart/launch/camera.launch"
+grep -Fq 'name="pixel_format" value="yuyv"' "${PREFIX}/share/agilex_onboard_autostart/launch/camera.launch"

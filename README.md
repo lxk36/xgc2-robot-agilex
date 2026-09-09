@@ -68,7 +68,7 @@ xgc2-agilex-onboard-teleop.service
 | `ros-melodic-xgc2-agilex` | (meta) | Vehicle chassis + bridge + autostart units; does not enable or start them |
 | `ros-melodic-xgc2-agilex-onboard-autostart` | `agilex_onboard_autostart` | standalone roscore + chassis/IMU/comm/camera/lidar/mocap/panel/teleop units; install-only. Site params in `/etc/xgc2/agilex/onboard.env`. Enable chassis (Wants roscore). Mocap for Agent sessions is `agilex-mocap-ros1`. Teleop viewer is optional: `ros-melodic-xgc2-agilex-onboard-teleop` then `xgc2-agilex-onboard-teleop.service`. |
 
-D435 color capture assembles the shared [`xgc2-camera-ros1`](https://github.com/XGC-Team/xgc2-camera-driver) V4L2 driver. Scout names the RealSense by-id node in `agilex_onboard_autostart/camera.launch`. Do not revive `xgc2_camera_d435`.
+D435 color capture assembles the shared [`xgc2-camera-ros1`](https://github.com/XGC-Team/xgc2-camera-driver) V4L2 driver. Scout uses `/dev/xgc2-d435-color`, selected by the D435 RGB USB interface, with YUYV capture. Do not revive `xgc2_camera_d435`.
 
 | Debian package | ROS package | Role |
 | --- | --- | --- |

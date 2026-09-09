@@ -1,8 +1,7 @@
 <launch>
-  <!-- Scout D435 color: assemble the shared XGC2 V4L2 camera product.
-       Use by-id; Scout-05 index0 is video2, not video0. -->
+  <!-- D435 RGB interface through the shared XGC2 V4L2 camera product. -->
   <arg name="camera_ns" default="d435" />
-  <arg name="video_device" default="/dev/v4l/by-id/usb-Intel_R__RealSense_TM__Depth_Camera_435_Intel_R__RealSense_TM__Depth_Camera_435-video-index0" />
+  <arg name="video_device" default="/dev/xgc2-d435-color" />
   <include file="$(find xgc2_camera_driver)/launch/camera.launch">
     <arg name="camera_ns" value="$(arg camera_ns)" />
     <arg name="config_file" value="$(find agilex_onboard_autostart)/config/d435.yaml" />
@@ -11,7 +10,7 @@
     <arg name="width" value="640" />
     <arg name="height" value="480" />
     <arg name="framerate" value="30.0" />
-    <arg name="pixel_format" value="mjpeg" />
+    <arg name="pixel_format" value="yuyv" />
     <arg name="output_encoding" value="bgr8" />
     <arg name="camera_name" value="d435" />
     <arg name="stream_id" value="d435" />

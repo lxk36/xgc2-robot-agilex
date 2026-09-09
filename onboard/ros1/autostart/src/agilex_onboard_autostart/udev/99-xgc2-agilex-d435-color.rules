@@ -1,0 +1,1 @@
+SUBSYSTEM=="video4linux", ENV{ID_VENDOR_ID}=="8086", ENV{ID_MODEL_ID}=="0b07", ENV{ID_USB_INTERFACE_NUM}=="03", ATTR{index}=="0", SYMLINK+="xgc2-d435-color"

@@ -231,6 +231,8 @@ build_autostart_deb() {
     cp -a "${PREFIX_ROOT}/share/${ros_pkg}/udev/99-xgc2-agilex-usb-recover.rules" \
       "${pkg_root}/etc/udev/rules.d/99-xgc2-agilex-usb-recover.rules"
   fi
+  install -m 0644 "${PREFIX_ROOT}/share/${ros_pkg}/udev/99-xgc2-agilex-d435-color.rules" \
+    "${pkg_root}/etc/udev/rules.d/99-xgc2-agilex-d435-color.rules"
   sed -i \
     -e "s|/opt/ros/melodic|/opt/ros/${ROS_DISTRO}|g" \
     -e "s|ROS_DISTRO=melodic|ROS_DISTRO=${ROS_DISTRO}|g" \
@@ -283,7 +285,7 @@ if [ "$1" = "configure" ]; then
     # Chassis, roscore and the official bridge are operator-owned. Preserve them on upgrade.
     if command -v udevadm >/dev/null 2>&1; then
       udevadm control --reload-rules >/dev/null 2>&1 || true
-      udevadm trigger --subsystem-match=net --action=add >/dev/null 2>&1 || true
+      udevadm trigger --subsystem-match=video4linux --action=add >/dev/null 2>&1 || true
     fi
     systemctl disable xgc2-agilex-imu.service >/dev/null 2>&1 || true
     # HI226 is operator-owned on vehicles that have the accessory (same as
