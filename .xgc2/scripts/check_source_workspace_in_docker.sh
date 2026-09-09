@@ -149,6 +149,18 @@ docker run --rm --network none \
     test ! -e /opt/ros/${ROS_DISTRO}/lib/agilex_swarm_ros_bridge/start-swarm-ros-bridge
     test -x /opt/ros/${ROS_DISTRO}/lib/agilex_onboard_autostart/start-swarm-ros-bridge
     test -x /opt/ros/${ROS_DISTRO}/lib/agilex_onboard_autostart/start-camera
+    test -x /opt/ros/${ROS_DISTRO}/lib/agilex_onboard_autostart/start-media-edge
+    grep -q "camera-media.launch" /opt/ros/${ROS_DISTRO}/lib/agilex_onboard_autostart/start-camera
+    grep -q "xgc2_camera_driver" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera.launch
+    grep -q "xgc_ros_image_rtp" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera-media.launch
+    grep -q "/d435/image_raw" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera-media.launch
+    ! grep -q "xgc2_camera_d435" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera.launch
+    ! grep -q "xgc2_camera_d435" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera-media.launch
+    test -f /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/config/d435.yaml
+    grep -q "raw_publish_mode: always" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/config/d435.yaml
+    grep -q "raw_publish_mode\" value=\"always\"" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera.launch
+    ! grep -q "depth-preview" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/config/sources.json
+    grep -q "\"id\": \"color\"" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/config/sources.json
     test -x /opt/ros/${ROS_DISTRO}/lib/agilex_onboard_autostart/start-lidar-helios16
     test -x /opt/ros/${ROS_DISTRO}/lib/agilex_onboard_autostart/start-mocap
     test -x /opt/ros/${ROS_DISTRO}/lib/agilex_onboard_autostart/start-roscore
@@ -173,6 +185,7 @@ docker run --rm --network none \
     test ! -f "$(rospack find agilex_onboard_autostart)/systemd/xgc2-agilex-base.service"
     test -f "$(rospack find agilex_onboard_autostart)/systemd/xgc2-agilex-swarm-ros-bridge.service"
     test -f "$(rospack find agilex_onboard_autostart)/systemd/xgc2-agilex-camera.service"
+    test -f "$(rospack find agilex_onboard_autostart)/systemd/xgc2-agilex-media-edge.service"
     test -f "$(rospack find agilex_onboard_autostart)/systemd/xgc2-agilex-lidar-helios16.service"
     test -f "$(rospack find agilex_onboard_autostart)/systemd/xgc2-agilex-mocap.service"
     test -f "$(rospack find agilex_onboard_autostart)/systemd/xgc2-agilex-roscore.service"

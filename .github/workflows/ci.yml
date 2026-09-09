@@ -68,6 +68,8 @@ jobs:
           bash -n .xgc2/scripts/package_sensor_debs.sh
           bash -n .xgc2/scripts/check_source_workspace_in_docker.sh
           bash -n onboard/ros1/autostart/src/agilex_onboard_autostart/scripts/start-onboard-teleop
+          bash -n onboard/ros1/autostart/src/agilex_onboard_autostart/scripts/start-media-edge
+          bash -n onboard/ros1/autostart/src/agilex_onboard_autostart/scripts/start-camera
           python3 onboard/ros1/teleop/src/xgc2_onboard_teleop/test/test_layout.py
           python3 - <<'PY'
           from pathlib import Path

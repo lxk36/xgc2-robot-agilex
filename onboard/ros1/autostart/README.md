@@ -22,6 +22,7 @@ src/agilex_onboard_autostart
   systemd/xgc2-agilex-imu-hi226.service
   systemd/xgc2-agilex-swarm-ros-bridge.service
   systemd/xgc2-agilex-camera.service
+  systemd/xgc2-agilex-media-edge.service
   systemd/xgc2-agilex-lidar-helios16.service
   systemd/xgc2-agilex-mocap.service
   systemd/xgc2-field-panel.service

@@ -19,7 +19,7 @@ control/src/             agilex_nmpc
 sensors/src/             hardware drivers only
   lidar/rslidar_sdk
   imu/serial_imu
-                         (D435 driver is shared xgc2-camera-d435)
+                         (D435 capture is shared xgc2-camera-driver)
 
 visualization/src/       agilex_onboard_rviz
 

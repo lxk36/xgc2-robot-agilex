@@ -26,7 +26,7 @@ sudo systemctl enable --now xgc2-agilex-onboard-teleop.service
 看画面还要相机话题（本包不 Depend、也不自动 launch 相机）：
 
 ```bash
-sudo apt-get install ros-melodic-xgc2-camera-d435   # 若车上还没有 D435 驱动
+sudo apt-get install ros-melodic-xgc2-camera-driver   # 若车上还没有 D435 驱动
 sudo systemctl start xgc2-agilex-camera.service     # 不要默认 enable 除非你要开机出图
 ```
 

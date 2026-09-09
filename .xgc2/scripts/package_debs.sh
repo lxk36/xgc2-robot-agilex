@@ -292,6 +292,7 @@ if [ "$1" = "configure" ]; then
     systemctl disable xgc2-agilex-communication.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-swarm-ros-bridge.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-camera.service >/dev/null 2>&1 || true
+    systemctl disable xgc2-agilex-media-edge.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-lidar.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-lidar-helios16.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-mocap.service >/dev/null 2>&1 || true
@@ -317,6 +318,7 @@ if [ "$1" = "remove" ] || [ "$1" = "deconfigure" ]; then
     systemctl disable xgc2-agilex-communication.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-swarm-ros-bridge.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-camera.service >/dev/null 2>&1 || true
+    systemctl disable xgc2-agilex-media-edge.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-lidar.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-lidar-helios16.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-mocap.service >/dev/null 2>&1 || true

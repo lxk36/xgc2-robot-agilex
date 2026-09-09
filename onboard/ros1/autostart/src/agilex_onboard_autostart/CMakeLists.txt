@@ -14,6 +14,7 @@ install(PROGRAMS
   scripts/start-chassis
   scripts/start-imu-hi226
   scripts/start-camera
+  scripts/start-media-edge
   scripts/start-swarm-ros-bridge
   scripts/start-mocap
   scripts/start-lidar-helios16
@@ -36,6 +37,7 @@ install(DIRECTORY web
 install(FILES
   config/onboard.env
   config/sources.json
+  config/d435.yaml
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/config
 )
 

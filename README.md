@@ -45,6 +45,7 @@ xgc2-agilex-swarm-ros-bridge.service
     /scout/chassis_state UInt32 1 Hz :3003
     /cmd_vel in from gcs :3001
 xgc2-agilex-camera.service
+xgc2-agilex-media-edge.service
 xgc2-agilex-lidar-helios16.service
 xgc2-agilex-mocap.service
   start-mocap: VRPN client only, no /pose or /ugv/pose relay
@@ -67,7 +68,7 @@ xgc2-agilex-onboard-teleop.service
 | `ros-melodic-xgc2-agilex` | (meta) | Vehicle chassis + bridge + autostart units; does not enable or start them |
 | `ros-melodic-xgc2-agilex-onboard-autostart` | `agilex_onboard_autostart` | standalone roscore + chassis/IMU/comm/camera/lidar/mocap/panel/teleop units; install-only. Site params in `/etc/xgc2/agilex/onboard.env`. Enable chassis (Wants roscore). Mocap for Agent sessions is `agilex-mocap-ros1`. Teleop viewer is optional: `ros-melodic-xgc2-agilex-onboard-teleop` then `xgc2-agilex-onboard-teleop.service`. |
 
-D435 / D435i capture lives in the shared [`xgc2-camera-d435`](https://github.com/XGC-Team/xgc2-camera-d435) product. Scout only names topics in `agilex_onboard_autostart/camera.launch`.
+D435 color capture assembles the shared [`xgc2-camera-ros1`](https://github.com/XGC-Team/xgc2-camera-driver) V4L2 driver. Scout names the RealSense by-id node in `agilex_onboard_autostart/camera.launch`. Do not revive `xgc2_camera_d435`.
 
 | Debian package | ROS package | Role |
 | --- | --- | --- |
@@ -83,7 +84,7 @@ roslaunch agilex_onboard_autostart camera.launch
 roslaunch agilex_onboard_autostart lidar.launch
 ```
 
-Onboard RViz is `agilex_onboard_rviz/rviz/viz.rviz`. Camera runtime also needs the vehicle `librealsense2` (on Xavier it is `/usr/local/lib`).
+Onboard RViz is `agilex_onboard_rviz/rviz/viz.rviz`. Camera runtime is V4L2 (`uvcvideo`); it does not need `librealsense2`.
 
 `docs/` in this product only keeps the vendor manual PDF. Field notes live in the main repo `memory/field/agilex/`.
 

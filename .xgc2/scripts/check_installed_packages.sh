@@ -78,6 +78,8 @@ test -x "${PREFIX}/lib/agilex_onboard_autostart/start-chassis"
 test -x "${PREFIX}/lib/agilex_onboard_autostart/start-imu-hi226"
 test -x "${PREFIX}/lib/agilex_onboard_autostart/start-swarm-ros-bridge"
 test -x "${PREFIX}/lib/agilex_onboard_autostart/start-camera"
+test -x "${PREFIX}/lib/agilex_onboard_autostart/start-media-edge"
+grep -q 'camera-media.launch' "${PREFIX}/lib/agilex_onboard_autostart/start-camera"
 test -x "${PREFIX}/lib/agilex_onboard_autostart/start-lidar-helios16"
 test -x "${PREFIX}/lib/agilex_onboard_autostart/start-mocap"
 test ! -e "${PREFIX}/lib/agilex_estimator/vrpn_relay"
@@ -108,6 +110,7 @@ test -f /lib/systemd/system/xgc2-agilex-onboard-teleop.service
 test -f /lib/systemd/system/xgc2-agilex-imu-hi226.service
 test -f /lib/systemd/system/xgc2-agilex-swarm-ros-bridge.service
 test -f /lib/systemd/system/xgc2-agilex-camera.service
+test -f /lib/systemd/system/xgc2-agilex-media-edge.service
 test -f /lib/systemd/system/xgc2-agilex-lidar-helios16.service
 test -f /lib/systemd/system/xgc2-agilex-mocap.service
 test ! -f /lib/systemd/system/xgc2-agilex-base.service
@@ -116,6 +119,7 @@ test ! -e /etc/systemd/system/multi-user.target.wants/xgc2-agilex-roscore.servic
 test ! -e /etc/systemd/system/multi-user.target.wants/xgc2-agilex-imu-hi226.service
 test ! -e /etc/systemd/system/multi-user.target.wants/xgc2-agilex-swarm-ros-bridge.service
 test ! -e /etc/systemd/system/multi-user.target.wants/xgc2-agilex-camera.service
+test ! -e /etc/systemd/system/multi-user.target.wants/xgc2-agilex-media-edge.service
 test ! -e /etc/systemd/system/multi-user.target.wants/xgc2-agilex-lidar-helios16.service
 test ! -e /etc/systemd/system/multi-user.target.wants/xgc2-agilex-mocap.service
 test ! -e /etc/systemd/system/multi-user.target.wants/xgc2-field-panel.service
@@ -137,6 +141,7 @@ grep -q '^FIELD_PANEL_STATE_SOURCE=estimator$' /etc/xgc2/agilex/onboard.env
 grep -q 'EnvironmentFile=-/etc/xgc2/agilex/onboard.env' /lib/systemd/system/xgc2-agilex-chassis.service
 grep -q 'EnvironmentFile=-/etc/xgc2/agilex/onboard.env' /lib/systemd/system/xgc2-agilex-roscore.service
 grep -q 'EnvironmentFile=-/etc/xgc2/agilex/onboard.env' /lib/systemd/system/xgc2-agilex-mocap.service
+grep -q 'EnvironmentFile=-/etc/xgc2/agilex/onboard.env' /lib/systemd/system/xgc2-agilex-media-edge.service
 grep -q 'roslaunch --wait' "${PREFIX}/lib/agilex_onboard_autostart/start-chassis"
 grep -q 'required="true"' "${PREFIX}/share/scout_base/launch/scout_mini_base.launch"
 test ! -e /etc/xgc2/agilex/swarm_ros_bridge/ros_topics.yaml

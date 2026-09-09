@@ -1,6 +1,6 @@
 <launch>
   <!-- Scout color preview: shared V4L2 RTP owner. Stop realsense2_camera first. -->
-  <arg name="device" default="/dev/video0" />
+  <arg name="device" default="/dev/v4l/by-id/usb-Intel_R__RealSense_TM__Depth_Camera_435_Intel_R__RealSense_TM__Depth_Camera_435-video-index0" />
   <include file="$(find xgc2_camera_driver)/launch/native_v4l2_media.launch">
     <arg name="device" value="$(arg device)" />
     <arg name="width" value="640" />
