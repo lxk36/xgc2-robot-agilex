@@ -280,8 +280,7 @@ if [ "$1" = "configure" ]; then
     systemctl disable xgc2-agilex-boot-settle.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-can0.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-base.service >/dev/null 2>&1 || true
-    systemctl disable xgc2-agilex-swarm-ros-bridge.service >/dev/null 2>&1 || true
-    # Chassis and standalone roscore are operator-owned. Do not disable on upgrade.
+    # Chassis, roscore and the official bridge are operator-owned. Preserve them on upgrade.
     if command -v udevadm >/dev/null 2>&1; then
       udevadm control --reload-rules >/dev/null 2>&1 || true
       udevadm trigger --subsystem-match=net --action=add >/dev/null 2>&1 || true
@@ -290,7 +289,6 @@ if [ "$1" = "configure" ]; then
     # HI226 is operator-owned on vehicles that have the accessory (same as
     # chassis). Do not disable on upgrade; a later apt must not wipe enable.
     systemctl disable xgc2-agilex-communication.service >/dev/null 2>&1 || true
-    systemctl disable xgc2-agilex-swarm-ros-bridge.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-camera.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-media-edge.service >/dev/null 2>&1 || true
     systemctl disable xgc2-agilex-lidar.service >/dev/null 2>&1 || true
