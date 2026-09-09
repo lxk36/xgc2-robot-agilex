@@ -152,7 +152,7 @@ docker run --rm --network none \
     test -x /opt/ros/${ROS_DISTRO}/lib/agilex_onboard_autostart/start-media-edge
     grep -q "camera-media.launch" /opt/ros/${ROS_DISTRO}/lib/agilex_onboard_autostart/start-camera
     grep -q "xgc2_camera_driver" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera.launch
-    grep -q "xgc_ros_image_rtp" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera-media.launch
+    grep -Fq "\$(find xgc2_camera_driver)/launch/ros_image_rtp.launch" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera-media.launch
     grep -q "/d435/image_raw" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera-media.launch
     ! grep -q "xgc2_camera_d435" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera.launch
     ! grep -q "xgc2_camera_d435" /workspace/agilex/onboard/ros1/autostart/src/agilex_onboard_autostart/launch/camera-media.launch
