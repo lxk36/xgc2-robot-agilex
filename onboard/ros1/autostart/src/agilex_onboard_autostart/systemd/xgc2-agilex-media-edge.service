@@ -5,8 +5,12 @@ Wants=network-online.target
 
 [Service]
 Type=simple
+User=agilex
+Group=agilex
+RuntimeDirectory=xgc2/media-edge
+RuntimeDirectoryMode=0755
 EnvironmentFile=-/etc/xgc2/agilex/onboard.env
-ExecStartPre=/bin/mkdir -p /tmp/xgc2/media /run/xgc2/media-edge
+ExecStartPre=/bin/mkdir -p /tmp/xgc2/media
 ExecStart=/opt/ros/melodic/lib/agilex_onboard_autostart/start-media-edge
 Restart=on-failure
 RestartSec=3s
